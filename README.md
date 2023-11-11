@@ -1,5 +1,5 @@
 # Store
-## Deployment Link: https://store-beta-lake.vercel.app/home
+## Deployment Link: https://store-beta-lake.vercel.app
 
 ## info
 
