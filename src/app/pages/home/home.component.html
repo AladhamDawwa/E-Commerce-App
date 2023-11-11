@@ -1,0 +1,28 @@
+<mat-drawer-container class="h-full">
+  <mat-drawer mode="side" opened="true" class="w-1/6 min-w-max">
+    <app-filters (categoryChange)="onCategoryChange($event)"></app-filters>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-products-header
+      [numOfItems]="products?.length ?? 0"
+      (columnsChange)="onColumnsChange($event)"
+      (sortChange)="onSortChange($event)"
+      (numOfItemsChange)="onNumOfItemsChange($event)"
+    ></app-products-header>
+    <div class="mb-20">
+      <mat-grid-list [cols]="colsCount" rowHeight="400">
+        <div *ngFor="let product of products; let i = index">
+          <mat-grid-tile *ngIf="beginIndex <= i && i < endIndex">
+            <div class="h-full" [ngClass]="colsCount == 1 ? 'w-full' : 'w-96'">
+              <app-product-card
+                [fullMode]="colsCount == 1"
+                [product]="product"
+                (addToCart)="onAddToCart($event)"
+              ></app-product-card>
+            </div>
+          </mat-grid-tile>
+        </div>
+      </mat-grid-list>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

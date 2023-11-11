@@ -1,0 +1,28 @@
+<mat-card class="text-center w-full h-full m-4">
+  <div
+    class="h-full w-full p-1 flex items-center"
+    [ngClass]="full ? 'flex-row' : 'flex-col'"
+  >
+    <div class="mb-1 h-[200px] w-full flex-1 flex justify-center">
+      <img class="h-full" [src]="product?.image" alt="" />
+    </div>
+    <div class="w-full h-full p-5 flex-1 flex flex-col justify-between">
+      <h5 class="font-light">{{ product?.category }}</h5>
+      <p>{{ product?.title }}</p>
+      <p *ngIf="full" class="mb-1 hidden sm:block">
+        {{ product?.description }}
+      </p>
+      <div
+        class="flex items-center"
+        [ngClass]="full ? 'justify-around' : 'justify-between'"
+      >
+        <div>
+          <b>{{ product?.price | currency }}</b>
+        </div>
+        <button mat-icon-button (click)="onAddToCart()">
+          <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-card>

@@ -1,0 +1,41 @@
+<mat-toolbar class="justify-between">
+  <a class="ml-6 font-bold italic text-2xl" routerLink="home">
+    <img
+      class="absolute left-1 w-8"
+      src="../../../assets/icon.png"
+      alt="ourLogo"
+    />
+    Aladham's Store
+  </a>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon
+      aria-hidden="false"
+      [matBadge]="numOfCartItems"
+      [matBadgeHidden]="!numOfCartItems"
+      >shopping_cart</mat-icon
+    >
+  </button>
+  <mat-menu #menu="matMenu" class="w-96 px-3">
+    <div class="flex justify-between">
+      <p>{{ numOfCartItems }} Item{{ numOfCartItems != 1 ? "s" : "" }}</p>
+      <a routerLink="cart">View Cart</a>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="flex justify-between" *ngFor="let item of cart.items">
+      <p class="font-light">
+        {{ item.product.title }} <b>x{{ item.quantity }}</b>
+      </p>
+      <b>{{ item.product.price | currency }}</b>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="flex justify-between">
+      <p>Total :</p>
+      <p class="font-bold">{{ total | currency }}</p>
+    </div>
+    <div>
+      <button mat-icon-button (click)="clearCart()">
+        <mat-icon color="warn"> remove_shopping_cart </mat-icon>
+      </button>
+    </div>
+  </mat-menu>
+</mat-toolbar>

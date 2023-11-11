@@ -1,0 +1,16 @@
+.flip{
+  transform: rotateX(180deg) translateY(20%);
+}
+
+.card{
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 900px) {
+  .card :nth-child(2){
+    order: 3;
+  }
+  .card{
+    justify-content: center;
+  }
+}
