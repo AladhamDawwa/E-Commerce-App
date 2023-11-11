@@ -1,8 +1,8 @@
 <mat-drawer-container class="h-full">
-  <mat-drawer mode="side" opened="true" class="w-1/6 min-w-max">
+  <mat-drawer mode="side" opened="true" class="w-1/6">
     <app-filters (categoryChange)="onCategoryChange($event)"></app-filters>
   </mat-drawer>
-  <mat-drawer-content>
+  <mat-drawer-content class="w-5/6">
     <app-products-header
       [numOfItems]="products?.length ?? 0"
       (columnsChange)="onColumnsChange($event)"
