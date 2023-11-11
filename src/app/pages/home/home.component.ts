@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit, OnDestroy{
   sort = 'asc';
   beginIndex = 0;
   endIndex = 0;
+  checkFilter = false;
   constructor(private cartService: CartService, private storeService : StoreService) {}
   
   ngOnInit(): void {
@@ -61,5 +62,9 @@ export class HomeComponent implements OnInit, OnDestroy{
 
   onAddToCart(product : Product) {
     this.cartService.addToCart(product);
+  }
+
+  toggleFilter(){
+    this.checkFilter = !this.checkFilter;
   }
 }

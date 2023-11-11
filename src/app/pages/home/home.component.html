@@ -1,8 +1,11 @@
-<mat-drawer-container class="h-full">
-  <mat-drawer mode="side" opened="true" class="w-1/6">
+<button mat-fab color="primary" (click)="toggleFilter()" class="filterButton">
+  <mat-icon>filter_list</mat-icon>
+</button>
+<mat-drawer-container class="flex justify-between">
+  <mat-drawer [opened]="checkFilter">
     <app-filters (categoryChange)="onCategoryChange($event)"></app-filters>
   </mat-drawer>
-  <mat-drawer-content class="w-5/6">
+  <mat-drawer-content>
     <app-products-header
       [numOfItems]="products?.length ?? 0"
       (columnsChange)="onColumnsChange($event)"

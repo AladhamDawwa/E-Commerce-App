@@ -1,3 +1,10 @@
 mat-drawer{
   background-color: rgb(236 254 255);
 }
+
+.filterButton{
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 99;
+}
