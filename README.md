@@ -1,10 +1,10 @@
 # Store
-##Deployment Link: https://store-beta-lake.vercel.app/home
+## Deployment Link: https://store-beta-lake.vercel.app/home
 
-##info
+## info
 
+This project uses Angular material enhanced by tailwind css for styling.\
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.8.
-This project uses Angular material enhanced by tailwind css for styling
 
 ## Development server
 
