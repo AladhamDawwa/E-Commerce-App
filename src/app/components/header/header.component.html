@@ -1,38 +1,38 @@
-<mat-toolbar class="justify-between">
-  <a class="ml-6 font-bold italic text-2xl" routerLink="home">
-    <img
-      class="absolute left-1 w-8"
-      src="../../../assets/icon.png"
-      alt="ourLogo"
-    />
-    Aladham's Store
+<mat-toolbar class="justify-between" color="primary">
+  <a routerLink="home">
+    <img class="absolute left-1 w-8" src="assets/icon.png" alt="ourLogo" />
+    <p class="ml-6 font-bold italic text-2xl">Aladham's Store</p>
   </a>
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon
       aria-hidden="false"
       [matBadge]="numOfCartItems"
+      matBadgeColor="warn"
       [matBadgeHidden]="!numOfCartItems"
       >shopping_cart</mat-icon
     >
   </button>
-  <mat-menu #menu="matMenu" class="w-96 px-3">
-    <div class="flex justify-between">
+
+  <mat-menu #menu="matMenu" class="w-[300px] px-3">
+    <div class="flex justify-between items-center py-1">
       <p>{{ numOfCartItems }} Item{{ numOfCartItems != 1 ? "s" : "" }}</p>
-      <a routerLink="cart">View Cart</a>
+      <button mat-button color="primary">
+        <a routerLink="cart">View Cart</a>
+      </button>
     </div>
     <mat-divider></mat-divider>
-    <div class="flex justify-between" *ngFor="let item of cart.items">
+    <div *ngFor="let item of cart.items" class="flex justify-between py-1">
       <p class="font-light">
         {{ item.product.title }} <b>x{{ item.quantity }}</b>
       </p>
       <b>{{ item.product.price | currency }}</b>
     </div>
     <mat-divider></mat-divider>
-    <div class="flex justify-between">
+    <div class="flex justify-between py-1">
       <p>Total :</p>
       <p class="font-bold">{{ total | currency }}</p>
     </div>
-    <div>
+    <div class="py-1">
       <button mat-icon-button (click)="clearCart()">
         <mat-icon color="warn"> remove_shopping_cart </mat-icon>
       </button>

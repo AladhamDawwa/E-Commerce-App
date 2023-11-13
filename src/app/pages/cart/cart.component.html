@@ -1,62 +1,53 @@
-<div class="h-full flex items-center justify-center w-full">
-  <mat-card *ngIf="cart.items.length" class="p-5 m-10 w-full">
-    <mat-card-content>
-      <div
-        *ngFor="let item of cart.items"
-        class="flex w-full items-center h-[100px]"
-      >
-        <img [src]="item.product.image" alt="" class="h-full p-2" />
-        <div
-          class="flex flex-col justify-around items-center w-full text-center"
-        >
-          <div class="flex justify-between items-center w-full">
-            <div class="flex flex-col justify-around items-center w-1/4">
-              <div class="text-xl">
-                <b>{{ item.product.title }}</b>
-              </div>
-              <div class="text-lg">{{ item.product.price | currency }}</div>
-            </div>
-            <div class="flex flex-col justify-around items-center w-1/4">
-              <div class="text-lg"><b>Quantity</b></div>
-              <div class="flex justify-around items-center w-full">
-                <button
-                  mat-icon-button
-                  color="primary"
-                  (click)="removeOneFromCart(item)"
-                >
-                  <mat-icon>remove</mat-icon>
-                </button>
-                <div class="text-xl">{{ item.quantity }}</div>
-                <button
-                  mat-icon-button
-                  color="primary"
-                  (click)="addToCart(item)"
-                >
-                  <mat-icon>add</mat-icon>
-                </button>
-              </div>
-            </div>
-            <div class="flex flex-col justify-around items-center w-1/4">
-              <div class="text-lg"><b>Total</b></div>
-              <div class="text-lg">
-                {{ item.quantity * item.product.price | currency }}
-              </div>
-            </div>
-          </div>
-        </div>
-        <button mat-icon-button color="warn" (click)="removeItem(item)">
-          <mat-icon>close</mat-icon>
-        </button>
+<div *ngIf="cart.items.length" class="w-full flex items-center justify-center">
+  <mat-card class="p-5 m-10 w-full">
+    <div
+      *ngFor="let item of cart.items"
+      class="flex w-full items-center h-[125px] p-5"
+    >
+      <div class="h-full w-1/4 p-2">
+        <img [src]="item.product.image" alt="" class="h-full" />
       </div>
-    </mat-card-content>
+      <div class="h-full flex flex-col w-1/4 justify-between">
+        <div class="text-xl overflow-hidden">
+          <b>{{ item.product.title }}</b>
+        </div>
+        <div class="text-lg">
+          {{ item.product.price | currency }}
+        </div>
+      </div>
+      <div class="h-full flex flex-col justify-around items-center w-1/4">
+        <div class="flex justify-around items-center w-full">
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="removeOneFromCart(item)"
+          >
+            <mat-icon>remove</mat-icon>
+          </button>
+          <div class="text-xl">{{ item.quantity }}</div>
+          <button mat-icon-button color="primary" (click)="addToCart(item)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="flex flex-col justify-around items-center w-1/4">
+        <div class="text-lg"><b>SubTotal</b></div>
+        <div class="text-lg">
+          {{ item.quantity * item.product.price | currency }}
+        </div>
+      </div>
+      <button mat-icon-button color="warn" (click)="removeItem(item)">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
     <mat-divider></mat-divider>
-    <div class="flex justify-end items-center w-full">
+    <div class="flex justify-end items-center w-full py-2">
       <div class="text-2xl mr-3"><b>Total</b></div>
       <div class="text-2xl">
         {{ total | currency }}
       </div>
     </div>
-    <div class="w-full flex justify-between">
+    <div class="w-full flex justify-between py-2">
       <button mat-raised-button color="warn" (click)="clearCart()">
         Clear All
       </button>
@@ -70,7 +61,12 @@
       </button>
     </div>
   </mat-card>
-  <mat-card *ngIf="!cart.items.length" class="w-1/4 h-1/4 min-w-[350px]">
+</div>
+<div
+  *ngIf="!cart.items.length"
+  class="h-full w-full flex items-center justify-center"
+>
+  <mat-card class="w-1/4 h-1/4 min-w-[350px]">
     <mat-card-content class="text-center h-full">
       <div class="h-full flex flex-col justify-around items-center">
         <div class="text-2xl"><b>Cart is empty</b></div>

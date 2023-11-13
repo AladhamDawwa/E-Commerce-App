@@ -5,27 +5,25 @@
   <mat-drawer [opened]="checkFilter">
     <app-filters (categoryChange)="onCategoryChange($event)"></app-filters>
   </mat-drawer>
-  <mat-drawer-content>
+  <mat-drawer-content *ngIf="products">
     <app-products-header
-      [numOfItems]="products?.length ?? 0"
+      [numOfItems]="products.length"
       (columnsChange)="onColumnsChange($event)"
       (sortChange)="onSortChange($event)"
       (numOfItemsChange)="onNumOfItemsChange($event)"
     ></app-products-header>
-    <div class="mb-20">
-      <mat-grid-list [cols]="colsCount" rowHeight="400">
-        <div *ngFor="let product of products; let i = index">
-          <mat-grid-tile *ngIf="beginIndex <= i && i < endIndex">
-            <div class="h-full" [ngClass]="colsCount == 1 ? 'w-full' : 'w-96'">
-              <app-product-card
-                [fullMode]="colsCount == 1"
-                [product]="product"
-                (addToCart)="onAddToCart($event)"
-              ></app-product-card>
-            </div>
-          </mat-grid-tile>
-        </div>
-      </mat-grid-list>
-    </div>
+    <mat-grid-list [cols]="colsCount" rowHeight="400">
+      <div *ngFor="let product of products; let i = index">
+        <mat-grid-tile *ngIf="beginIndex <= i && i < endIndex">
+          <div class="h-full w-full p-5">
+            <app-product-card
+              [fullMode]="colsCount == 1"
+              [product]="product"
+              (addToCart)="onAddToCart($event)"
+            ></app-product-card>
+          </div>
+        </mat-grid-tile>
+      </div>
+    </mat-grid-list>
   </mat-drawer-content>
 </mat-drawer-container>

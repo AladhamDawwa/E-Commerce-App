@@ -14,6 +14,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatSnackBarModule} from '@angular/material/snack-bar'; 
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -54,6 +55,7 @@ import { CartComponent } from './pages/cart/cart.component';
     MatSnackBarModule,
     MatPaginatorModule,
     MatSelectModule,
+    MatTooltipModule,
     HttpClientModule
   ],
   providers: [],
