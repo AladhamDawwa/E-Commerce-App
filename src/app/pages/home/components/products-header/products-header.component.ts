@@ -13,8 +13,13 @@ export class ProductsHeaderComponent {
   @Output() numOfItemsChange = new EventEmitter<Array<number>>();
 
   pageSize = 5;
+  pageIndex = 0;
 
-  ngOnInit(){
+  ngOnChanges() {
+    // console.log(this.numOfItems);
+  }
+
+  ngOnInit() {
     this.numOfItemsChange.emit([0, this.pageSize]);
   }
 

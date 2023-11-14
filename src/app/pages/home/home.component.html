@@ -1,11 +1,20 @@
-<button mat-fab color="primary" (click)="toggleFilter()" class="filterButton">
+<button
+  *ngIf="products && products.length"
+  mat-fab
+  color="primary"
+  (click)="toggleFilter()"
+  class="filterButton"
+>
   <mat-icon>filter_list</mat-icon>
 </button>
-<mat-drawer-container class="flex justify-between">
+<mat-drawer-container
+  *ngIf="products && products.length"
+  class="flex justify-between min-h-full"
+>
   <mat-drawer [opened]="checkFilter">
     <app-filters (categoryChange)="onCategoryChange($event)"></app-filters>
   </mat-drawer>
-  <mat-drawer-content *ngIf="products">
+  <mat-drawer-content>
     <app-products-header
       [numOfItems]="products.length"
       (columnsChange)="onColumnsChange($event)"
@@ -27,3 +36,13 @@
     </mat-grid-list>
   </mat-drawer-content>
 </mat-drawer-container>
+
+<div
+  *ngIf="!products || products.length == 0"
+  class="flex flex-col items-center justify-center min-h-full"
+>
+  <div class="flex flex-col items-center">
+    <mat-spinner></mat-spinner>
+    <p class="text-2xl m-10">This might take some time.</p>
+  </div>
+</div>
