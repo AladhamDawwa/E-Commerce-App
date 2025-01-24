@@ -1,4 +1,5 @@
 # Store
+Watch tutorial on how I built this store => https://youtu.be/-QV07KcnJEk
 ## Deployment Link: https://mystore-psi.vercel.app
 
 ## info
